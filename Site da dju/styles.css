@@ -1,37 +1,146 @@
-
-
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    background-color: #f9f9f9;
-}
-
+/* Navbar */
 nav {
-    background-color: #4CAF50;
-    padding: 10px;
-}
-
-nav ul {
-    list-style: none;
+    background-color: #356137; /* Cor verde */
+    height: 90px;
     display: flex;
-    gap: 15px;
-    margin: 0;
-    padding: 0;
     justify-content: center;
+    align-items: center;
+    padding: 0 20px;
 }
 
+/* Estilização da lista */
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Espaço entre itens */
+nav ul li {
+    margin: 0 15px;
+}
+
+/* Estilo dos links */
 nav ul li a {
     text-decoration: none;
-    color: white; /* Cor do texto dos links */
+    color: #EFE8C0; /* Bege */
     font-weight: bold;
-    padding: 5px 10px;
+    font-size: 26px;
+    font-family: 'NauryRedKeds', sans-serif;
+    margin: 0 50px;
     transition: background-color 0.3s ease;
 }
 
 nav ul li a:hover {
-    background-color: #45a049; /* Cor ao passar o mouse */
-    border-radius: 5px;
+    background-color: #358539; /* Cor ao passar o mouse */
+    border-radius: 5px; /* Bordas arredondadas para um toque visual */
+    border-radius: 30px;
+}
+
+
+/* Estilizando a logo centralizada */
+.logo-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.logo-container img {
+    height: 90px;
+    width: auto;
+}
+
+@font-face {
+    font-family: 'NauryRedKeds';
+    src: url('Fonte/NauryzRedKeds.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NauryRedKeds';
+    src: url('Fonte/Montserrat-Regular.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.intro-section {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #f5f5dc;
+    min-height: 300px;
+}
+
+.green-box {
+    position: relative;
+    width: 300px;
+    height: 250px;
+    background-color: #356137;
+    border-radius: 15px;
+    margin-right: 20px;
+}
+
+.star {
+    color: rgb(173, 25, 25);
+    font-size: 90px;
+    position: absolute;
+}
+
+.top-star {
+    top: -30px;
+    left: -30px;
+}
+
+.bottom-star {
+    bottom: -30px;
+    right: -30px;
+}
+
+.content h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+
+.content p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #333;
+}
+
+.bottom-bar {
+    display: flex; /* Ativa Flexbox */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 150px; /* Ajuste a altura da barra */
+    background-color: #f5f5dc; /* Cor de fundo bege */
+    border-top: 2px solid #4CAF50; /* Linha superior para separar a barra */
+}
+
+/* Estilo da imagem */
+.bottom-bar img {
+    max-height: 100px; /* Limita a altura da imagem */
+    max-width: 100%; /* Garante que a largura seja proporcional */
+    object-fit: contain; /* Mantém proporções sem distorção */
+}
+
+.divider {
+    
+    border: none;
+    height: 90px;
+    background-color: #356137;
+    width: 600%;
+    position: center;
+    top: 0px; /* Ajuste o valor conforme necessário */
+    margin: 0px 0;
+    
 }

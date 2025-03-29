@@ -5,51 +5,919 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Djulia Delfino</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4eee1;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #5b6c48;
+            padding: 20px 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 50px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            text-transform: lowercase;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        /* Estilo para a seção intro */
+        .intro-section {
+            display: flex;
+            padding: 50px;
+            gap: 50px;
+            align-items: center;
+        }
+
+        /* Estilo para a box verde com estrelas */
+        .green-box {
+            width: 300px;
+            height: 300px;
+            background-color: #5b6c48;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .green-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            color: #8b0000;
+            font-size: 80px;
+            transform: rotate(45deg);
+            z-index: 2;
+        }
+
+        .top-star {
+            top: -10px;
+            left: -10px;
+        }
+
+        .bottom-star {
+            bottom: -10px;
+            right: -10px;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        .content h1 {
+            font-size: 4em;
+            margin: 0;
+            color: #000;
+            font-weight: normal;
+        }
+
+        .content p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Estilo para a barra divisória */
+        .divider {
+            background-color: #5b6c48;
+            height: 80px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .divider img {
+            height: 50px;
+        }
+
+        .divider .icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .divider .icons i {
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .divider .icons i:hover {
+            color: #8b0000;
+        }
+
+        /* Estilo para a seção preta */
+        .black-section {
+            background-color: #000;
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: white;
+            gap: 50px;
+        }
+
+        .black-section .text-content {
+            width: 40%;
+            text-align: left;
+            padding: 0;
+        }
+
+        .black-section p {
+            font-size: 1.4em;
+            line-height: 1.6;
+        }
+
+        .music-box {
+            width: 200px;
+            height: 200px;
+            background-color: #5b6c48;
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .music-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .music-box h2 {
+            color: white;
+            font-size: 2em;
+            position: absolute;
+            z-index: 2;
+        }
+
+        .decorative-star {
+            position: absolute;
+            font-size: 100px;
+            color: #f4eee1;
+        }
+
+        .red-star {
+            color: #8b0000;
+            font-size: 140px;
+        }
+
+        .star-1 {
+            top: 30px;
+            left: 30px;
+        }
+
+        .star-2 {
+            top: 45%;
+            left: 10%;
+            transform: translateY(-50%);
+        }
+
+        .star-3 {
+            bottom: 60px;
+            left: 80px;
+        }
+
+        .red-bar {
+            width: 100%;
+            height: 30px;
+            background-color: #8b0000;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        /* Estilo para o carrossel */
+        .carousel-section {
+            background-color: #8b0000;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
+        }
+
+        .carousel-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .carousel-wrapper {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.5s ease;
+            width: fit-content;
+            padding: 20px 0;
+        }
+
+        .carousel-item {
+            width: 250px;
+            height: 250px;
+            background-color: #f4eee1;
+            border-radius: 30px;
+            overflow: hidden;
+            flex-shrink: 0;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .carousel-item.active {
+            opacity: 1;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-arrow {
+            color: #8b0000;
+            font-size: 3em;
+            cursor: pointer;
+            user-select: none;
+            z-index: 2;
+            background: none;
+            border: none;
+            padding: 0 20px;
+            transition: color 0.3s ease;
+            position: absolute;
+        }
+
+        .carousel-prev {
+            left: -80px;
+        }
+
+        .carousel-next {
+            right: -80px;
+        }
+
+        .carousel-arrow:hover {
+            color: #a30000;
+        }
+
+        .carousel-arrow:disabled {
+            color: #5b0000;
+            cursor: not-allowed;
+        }
+
+        .carousel-titles {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 20px 100px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .carousel-title {
+            color: #f4eee1;
+            font-size: 2.5em;
+            font-family: Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .carousel-star {
+            position: absolute;
+            color: #f4eee1;
+            font-size: 60px;
+            z-index: 1;
+        }
+
+        .carousel-star.top-left {
+            top: 20px;
+            left: 20px;
+        }
+
+        .carousel-star.bottom-right {
+            bottom: 20px;
+            right: 20px;
+        }
+
+        /* Estilo para a seção de portfólio */
+        .portfolio-section {
+            display: flex;
+            width: 100%;
+            position: relative;
+        }
+
+        .portfolio-half {
+            flex: 1;
+            padding: 60px;
+            position: relative;
+        }
+
+        .portfolio-half:first-child {
+            background-color: #4a0000;
+        }
+
+        .portfolio-half:last-child {
+            background-color: #2a0000;
+        }
+
+        .portfolio-title {
+            color: #f4eee1;
+            font-size: 4em;
+            font-family: Arial, sans-serif;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            letter-spacing: 4px;
+        }
+
+        .portfolio-images {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .portfolio-image {
+            width: 250px;
+            height: 250px;
+            background-color: #f4eee1;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .portfolio-text {
+            color: #f4eee1;
+            font-size: 1.2em;
+            line-height: 1.8;
+            max-width: 600px;
+        }
+
+        .portfolio-star {
+            position: absolute;
+            color: #f4eee1;
+            font-size: 80px;
+        }
+
+        .portfolio-star.top-right {
+            top: 40px;
+            right: 40px;
+        }
+
+        .portfolio-star.bottom-left {
+            bottom: 40px;
+            left: 40px;
+        }
+
+        /* Estilo para a seção de coisas que amo */
+        .things-i-love {
+            background-color: #000;
+            padding: 60px 40px;
+            position: relative;
+        }
+
+        .things-i-love h2 {
+            color: #f4eee1;
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 50px;
+            font-family: Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .star-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .star-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .star-item .star {
+            width: 150px;
+            height: 150px;
+            background-color: #5b6c48;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .star-item .star img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+
+        .star-item p {
+            color: #f4eee1;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 10px;
+        }
+
+        .corner-star {
+            position: absolute;
+            color: #8b0000;
+            font-size: 60px;
+        }
+
+        .corner-star.top-left {
+            top: 20px;
+            left: 20px;
+        }
+
+        .social-bar {
+            background-color: #5b6c48;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-bar a {
+            color: #f4eee1;
+            font-size: 60px;
+            text-decoration: none;
+        }
+
+        .social-bar a:hover {
+            color: #8b0000;
+        }
+
+        /* Estilo para seções de familiares e amigos */
+        .family-section, .friends-section {
+            background-color: #4a0000;
+            padding: 60px 40px;
+            position: relative;
+        }
+
+        .friends-section {
+            background-color: #000;
+        }
+
+        .section-title {
+            color: #f4eee1;
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 50px;
+            font-family: Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .section-title .star {
+            color: #f4eee1;
+            font-size: 40px;
+            position: static;
+            transform: none;
+        }
+
+        .photo-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .photo-item {
+            text-align: center;
+        }
+
+        .photo-square {
+            width: 250px;
+            height: 250px;
+            background-color: #f4eee1;
+            border-radius: 30px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .photo-square img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-text {
+            color: #f4eee1;
+            font-size: 1.2em;
+            line-height: 1.4;
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
+        /* Estilo para o footer */
+        .footer-section {
+            background-color: #5b6c48;
+            padding: 40px;
+            text-align: center;
+            color: #f4eee1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-text {
+            max-width: 800px;
+            margin: 0;
+            font-size: 1.2em;
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+
+        .footer-logo {
+            height: 60px;
+            margin: 20px 0;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .footer-social a {
+            color: #f4eee1;
+            font-size: 30px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: #8b0000;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const wrapper = document.querySelector('.carousel-wrapper');
+            const items = document.querySelectorAll('.carousel-item');
+            const prevBtn = document.querySelector('.carousel-prev');
+            const nextBtn = document.querySelector('.carousel-next');
+            
+            const itemsToShow = 4;
+            const totalItems = items.length;
+            let currentGroup = 0;
+            const totalGroups = Math.ceil(totalItems / itemsToShow);
+
+            // Função para atualizar a visibilidade dos itens
+            function updateCarousel() {
+                const startIndex = currentGroup * itemsToShow;
+                const endIndex = Math.min(startIndex + itemsToShow, totalItems);
+
+                // Atualiza a classe active para os itens visíveis
+                items.forEach((item, index) => {
+                    if (index >= startIndex && index < endIndex) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+
+                // Move o wrapper para mostrar o grupo atual
+                const itemWidth = items[0].offsetWidth + 20; // width + gap
+                wrapper.style.transform = `translateX(-${startIndex * itemWidth}px)`;
+
+                // Atualiza o estado dos botões
+                prevBtn.disabled = currentGroup === 0;
+                nextBtn.disabled = currentGroup === totalGroups - 1;
+            }
+
+            // Event listeners para os botões
+            prevBtn.addEventListener('click', () => {
+                if (currentGroup > 0) {
+                    currentGroup--;
+                    updateCarousel();
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentGroup < totalGroups - 1) {
+                    currentGroup++;
+                    updateCarousel();
+                }
+            });
+
+            // Inicializa o carrossel
+            updateCarousel();
+        });
+    </script>
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li> <!-- Alterar a ask bar de acordo com os titulos depois-->
-                <li><a href="#portfolio">Portfólio</a></li>
-                <li><img src="path/to/your/image.png" alt="Logo Djulia Delfino" class="logo"></li>
-                <li><a href="#familiares">Familiares</a></li>
-                <li><a href="#amigos">Amigos</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li class="logo-container">
+                    <img src="Images/SOMENTE AS LOGOS-16.png" alt="Logo Djulia Delfino" class="logo">
+                </li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="home">
-        <h1>Bem-vindo ao Meu Blog</h1>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</p>
+    <section class="intro-section">
+        <div class="green-box">
+            <img src="Images/SOMENTE AS LOGOS-16.png" alt="Imagem principal"> <!-- local de add a foto-->
+            <div class="star top-star">★</div>
+            <div class="star bottom-star">★</div>
+        </div>
+        <div class="content">
+            <h1>Oiee!</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea.</p>
+        </div>
+    </section>
+        
+    <div class="divider">
+        <div class="icons">
+            <a href="https://www.instagram.com/djulia_d26/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <i class="fab fa-whatsapp"></i>
+        </div>
+        <img src="Images/SOMENTE AS LOGOS-16.png" alt="Logo Djulia Delfino">
+        <div style="width: 100px;"></div>
+    </div>
+
+    <!-- Nova seção preta com estrelas -->
+    <section class="black-section">
+        <div class="decorative-star star-1 red-star">★</div>
+        <div class="decorative-star star-2">★</div>
+        <div class="decorative-star star-3">★</div>
+        
+        <div class="text-content">
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in</p>
+        </div>
+
+        <div class="music-box">
+            <img src="Images/sua-imagem-musica.jpg" alt="Música">
+            <h2>MUSICA?</h2>
+        </div>
+
+        <div class="red-bar"></div>
     </section>
 
-    <section id="portfolio">
-        <h2>Portfólio</h2>
-        <p>Confira meus trabalhos e projetos criativos!</p>
+    <!-- Seção do carrossel -->
+    <section class="carousel-section">
+        <div class="carousel-star top-left">★</div>
+        <div class="carousel-container">
+            <button class="carousel-arrow carousel-prev" disabled>&#10094;</button>
+            <div class="carousel-wrapper">
+                <div class="carousel-item active">
+                    <img src="Images/foto1.jpg" alt="Foto 1">
+                </div>
+                <div class="carousel-item active">
+                    <img src="Images/foto2.jpg" alt="Foto 2">
+                </div>
+                <div class="carousel-item active">
+                    <img src="Images/foto3.jpg" alt="Foto 3">
+                </div>
+                <div class="carousel-item active">
+                    <img src="Images/foto4.jpg" alt="Foto 4">
+                </div>
+                <div class="carousel-item">
+                    <img src="Images/foto5.jpg" alt="Foto 5">
+                </div>
+                <div class="carousel-item">
+                    <img src="Images/foto6.jpg" alt="Foto 6">
+                </div>
+            </div>
+            <button class="carousel-arrow carousel-next">&#10095;</button>
+        </div>
+        <div class="carousel-star bottom-right">★</div>
     </section>
 
-    <section id="musica">
-        <h2>Música</h2>
-        <p>Descubra minhas recomendações musicais favoritas!</p>
+    <!-- Nova seção de portfólio -->
+    <section class="portfolio-section">
+        <!-- Lado Yoongi -->
+        <div class="portfolio-half">
+            <h2 class="portfolio-title">Yoongi</h2>
+            <div class="portfolio-images">
+                <div class="portfolio-image">
+                    <img src="Images/yoongi1.jpg" alt="Yoongi 1">
+                </div>
+                <div class="portfolio-image">
+                    <img src="Images/yoongi2.jpg" alt="Yoongi 2">
+                </div>
+            </div>
+            <p class="portfolio-text">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed<br>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam<br>
+                nonummy nibh euismod tincidunt ut laoreet dolore magna<br>
+                aliquam erat volutpat. Ut wisi enim ad minim
+            </p>
+            <div class="portfolio-star bottom-left">★</div>
+        </div>
+
+        <!-- Lado Ursula -->
+        <div class="portfolio-half">
+            <h2 class="portfolio-title">Ursula</h2>
+            <div class="portfolio-images">
+                <div class="portfolio-image">
+                    <img src="Images/ursula1.jpg" alt="Ursula 1">
+                </div>
+                <div class="portfolio-image">
+                    <img src="Images/ursula2.jpg" alt="Ursula 2">
+                </div>
+            </div>
+            <p class="portfolio-text">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed<br>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam<br>
+                nonummy nibh euismod tincidunt ut laoreet dolore magna<br>
+                aliquam erat volutpat. Ut wisi enim ad minim
+            </p>
+            <div class="portfolio-star top-right">★</div>
+        </div>
     </section>
 
-    <section id="Familiares">
-        <h2>Familiares</h2>
-        <ul>
-            <li>Gatos</li>
-            <li>Sorvetes</li>
-            <li>Dragões</li>
-        </ul>
+    <!-- Seção Coisas que Amo -->
+    <section class="things-i-love">
+        <div class="corner-star top-left">★</div>
+        <h2>Coisas que Amo</h2>
+        <div class="star-grid">
+            <div class="star-item">
+                <div class="star">
+                    <img src="Images/gatos.jpg" alt="Gatos">
+                </div>
+                <p>Gatos</p>
+            </div>
+            <div class="star-item">
+                <div class="star">
+                    <img src="Images/sorvetes.jpg" alt="Sorvetes">
+                </div>
+                <p>Sorvetes</p>
+            </div>
+            <div class="star-item">
+                <div class="star">
+                    <img src="Images/dinossauros.jpg" alt="Dinossauros">
+                </div>
+                <p>Dinossauros</p>
+            </div>
+            <div class="star-item">
+                <div class="star">
+                    <img src="Images/design.jpg" alt="Design">
+                </div>
+                <p>Design</p>
+            </div>
+            <div class="star-item">
+                <div class="star">
+                    <img src="Images/manwhas.jpg" alt="Manwhas">
+                </div>
+                <p>Manwhas</p>
+            </div>
+            <div class="star-item">
+                <div class="star">
+                    <img src="Images/dragoes.jpg" alt="Dragões">
+                </div>
+                <p>Dragões</p>
+            </div>
+            <div class="star-item">
+                <div class="star">
+                    <img src="Images/jogos.jpg" alt="Jogos">
+                </div>
+                <p>Jogos</p>
+            </div>
+            <div class="star-item">
+                <div class="star">
+                    <img src="Images/musica.jpg" alt="Música">
+                </div>
+                <p>Música</p>
+            </div>
+        </div>
     </section>
 
-    <section id="amigos">
-        <h2>Amigos</h2>
-        <p>Conheça meus amigos incríveis e inspiradores!</p>
+    <!-- Barra de redes sociais -->
+    <div class="social-bar">
+        <a href="https://www.instagram.com/djulia_d26/" target="_blank" class="fab fa-instagram"></a>
+        <a href="#" class="fab fa-whatsapp"></a>
+    </div>
+
+    <!-- Seção Familiares -->
+    <section class="family-section">
+        <h2 class="section-title">
+            <span class="star">★</span>
+            Familiares
+            <span class="star">★</span>
+        </h2>
+        <div class="photo-grid">
+            <div class="photo-item">
+                <div class="photo-square">
+                    <img src="Images/familiar1.jpg" alt="Familiar 1">
+                </div>
+                <p class="photo-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam</p>
+            </div>
+            <div class="photo-item">
+                <div class="photo-square">
+                    <img src="Images/familiar2.jpg" alt="Familiar 2">
+                </div>
+                <p class="photo-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam</p>
+            </div>
+            <div class="photo-item">
+                <div class="photo-square">
+                    <img src="Images/familiar3.jpg" alt="Familiar 3">
+                </div>
+                <p class="photo-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam</p>
+            </div>
+        </div>
     </section>
 
-    <footer>
-        <p>Site criado por [Seu Nome] - 2025</p>
+    <!-- Seção Friends -->
+    <section class="friends-section">
+        <h2 class="section-title">
+            <span class="star">★</span>
+            Friends
+            <span class="star">★</span>
+        </h2>
+        <div class="photo-grid">
+            <div class="photo-item">
+                <div class="photo-square">
+                    <img src="Images/friend1.jpg" alt="Friend 1">
+                </div>
+            </div>
+            <div class="photo-item">
+                <div class="photo-square">
+                    <img src="Images/friend2.jpg" alt="Friend 2">
+                </div>
+            </div>
+            <div class="photo-item">
+                <div class="photo-square">
+                    <img src="Images/friend3.jpg" alt="Friend 3">
+                </div>
+            </div>
+            <div class="photo-item">
+                <div class="photo-square">
+                    <img src="Images/friend4.jpg" alt="Friend 4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Footer -->
+    <footer class="footer-section">
+        <p class="footer-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent</p>
+        <img src="Images/SOMENTE AS LOGOS-16.png" alt="Logo Djulia Delfino" class="footer-logo">
+        <div class="footer-social">
+            <a href="https://www.instagram.com/djulia_d26/" target="_blank" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-whatsapp"></a>
+        </div>
     </footer>
+
 </body>
 </html>
